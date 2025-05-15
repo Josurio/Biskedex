@@ -1,9 +1,27 @@
 import telebot
 import time
 from telebot import types
+from flask import Flask, request
 
-TOKEN = '8067492976:AAH6-jnBPKIsG8Yb1tjN0jhGgrFvq9ErRWc'
+TOKEN = os.environ['8067492976:AAH6-jnBPKIsG8Yb1tjN0jhGgrFvq9ErRWc']
 bot = telebot.TeleBot(TOKEN)
+app = Flask(__name__)
+
+@app.route(f"/{TOKEN}", methods=["POST"])
+def webhook():
+    update = telebot.types.Update.de_json(request.stream.read().decode("utf-8"))
+    bot.process_new_updates([update])
+    return "OK", 200
+
+@app.route("/", methods=["GET"])
+def index():
+    return "Bot funcionando!"
+
+# Set webhook on start
+if __name__ == "__main__":
+    bot.remove_webhook()
+    bot.set_webhook(url=f"{os.environ['RENDER_EXTERNAL_URL']}/{TOKEN}")
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
 # Diccionario para guardar nombres por chat
 usuarios = {}
@@ -86,6 +104,12 @@ def guardar_nombre(message):
     
     bot.send_message(message.chat.id, f"Genial, *{nombre}* {genero} ", parse_mode='MarkdownV2')
     time.sleep(2)
+    bot.send_message(message.chat.id, "Antes de empezar con la aventura, me parce importante que sepas que el servidor donde estoy alojado se conecta mediante eduroam 🥔")
+    with open('patata.jpg', 'rb') as patata:
+        bot.send_photo(message.chat.id, patata, caption="Aquí tienes tu video 🎥")
+
+    bot.send_message(message.chat.id, "Asi que, si no usas la Bikedex durante un rato, puede que al reconectar tarde un rato en buscar la señal")
+
     bot.send_message(message.chat.id, "Pista")
 
 
@@ -93,5 +117,3 @@ def guardar_nombre(message):
 def enviar_video(msg):
     with open('output_quad.mp4', 'rb') as video:
         bot.send_video(msg.chat.id, video, caption="Aquí tienes tu video 🎥")
-
-bot.polling()
