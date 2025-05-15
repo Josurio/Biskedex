@@ -18,19 +18,6 @@ def webhook():
 def index():
     return "Bot funcionando!"
 
-if __name__ == "__main__":
-    render_url = 'https://biskedex.onrender.com'
-    if render_url:
-        bot.remove_webhook()
-        bot.set_webhook(url=f"{render_url}/{TOKEN}")
-        print(f"Webhook seteado en {render_url}/{TOKEN}")
-    else:
-        print("❌ ERROR: RENDER_EXTERNAL_URL no definido. Saltando webhook setup.")
-    
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-
-
-
 # Diccionario para guardar nombres por chat
 usuarios = {}
 estados = {}
@@ -125,3 +112,14 @@ def guardar_nombre(message):
 def enviar_video(msg):
     with open('output_quad.mp4', 'rb') as video:
         bot.send_video(msg.chat.id, video, caption="Aquí tienes tu video 🎥")
+
+if __name__ == "__main__":
+    render_url = 'https://biskedex.onrender.com'
+    if render_url:
+        bot.remove_webhook()
+        bot.set_webhook(url=f"{render_url}/{TOKEN}")
+        print(f"Webhook seteado en {render_url}/{TOKEN}")
+    else:
+        print("❌ ERROR: RENDER_EXTERNAL_URL no definido. Saltando webhook setup.")
+    
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
