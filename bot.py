@@ -119,14 +119,43 @@ def guardar_nombre(message):
     bot.send_message(message.chat.id, "Ademas, yo conozco una forma de superar los gimnasios, digamos que de una forma... distinta, y a la vez conseguir Biskymones más facilmente.")
    
     time.sleep(3)
-    bot.send_message(message.chat.id, "De momento, te voy indicando la ubicación del primer, en cuanto llegues dime el nombre de")
+    bot.send_message(message.chat.id, "De momento, te voy indicando la ubicación del primer, en cuanto llegues mandame la ubi para mandarte instrucciones")
    
     latitude = 43.41649 
     longitude = -2.94475
     bot.send_location(message.chat.id, latitude, longitude)
     bot.send_message(message.chat.id, "Aquí está la ubicación que pediste 📍")
     
+@bot.message_handler(content_types=['location'])
+def manejar_ubicacion(message):
+    lat = message.location.latitude
+    lon = message.location.longitude
 
+    # Ejemplo simple de respuesta en función de coordenadas
+    if 43.41 > lat > 43.42 and -2.94 > lon > -2.95:
+        bot.reply_to(message, "¡Perfecto! Te encuentras debajo del gimnasio del viento, aqui moran los Biskymon tipo volador. Pero no intentes entrar... no somos bienvenidos.")
+        bot.reply_to(message, "Para robar, digo, conseguir tus primeros Biskymón, tendras que distraer a la gente mientras otro compañero busca los Biskymón.")
+        bot.reply_to(message, "Creo que se te da bien hablar de Biksy cosas con gente random, eso tendrás que hacer.")
+        time.sleep(2)
+        with open('cat.mp4', 'rb') as cat:
+            bot.send_video(message.chat.id, cat)
+        time.sleep(2)
+        bot.reply_to(message, "Prueba 🎯: Debes coger a una persona (preferiblemente externa a Bisky) y mantener una conversación seria y técnica durante 1 minuto sobre cohetes.")
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn1 = types.KeyboardButton("✅ ¡Los tengo!")
+        markup.add(btn1)
+        bot.send_message(message.chat.id, "Avisame cuando tengas los Biskymón:", reply_markup=markup)
+        estados[message.chat.id] = 'viento'
+    else:
+        bot.reply_to(message, "¡Aún estás lejos!, Avísame cuando hayas llegado")
+
+
+@bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'viento')
+def responder_opciones(msg):
+    if msg.text == "✅ ¡Los tengo!":
+        if msg.chat.id not in usuarios:
+            usuarios[msg.chat.id] = {}  # Creamos un sub-diccionario para ese usuario si no existe
+        usuarios[msg.chat.id]['genero'] = '👦'  # Guardamos el género
 
 @bot.message_handler(func=lambda msg: msg.text.lower() == "video")
 def enviar_video(msg):
