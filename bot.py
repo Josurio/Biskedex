@@ -21,7 +21,7 @@ def index():
 # Set webhook on start
 if __name__ == "__main__":
     bot.remove_webhook()
-    bot.set_webhook(url=f"{os.environ['	https://biskedex-bot.com']}/{TOKEN}")
+    bot.set_webhook(url=f"{os.environ['RENDER_EXTERNAL_URL']}/{TOKEN}")
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
 # Diccionario para guardar nombres por chat
