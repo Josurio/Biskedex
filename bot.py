@@ -132,7 +132,7 @@ def manejar_ubicacion(message):
     lon = message.location.longitude
 
     # Ejemplo simple de respuesta en función de coordenadas
-    if 43.41 > lat > 43.42 and -2.94 > lon > -2.95:
+    if 43.41 > lat > 43.42 and -2.94 < lon < -2.95:
         bot.reply_to(message, "¡Perfecto! Te encuentras debajo del gimnasio del viento, aqui moran los Biskymon tipo volador. Pero no intentes entrar... no somos bienvenidos.")
         bot.reply_to(message, "Para robar, digo, conseguir tus primeros Biskymón, tendras que distraer a la gente mientras otro compañero busca los Biskymón.")
         bot.reply_to(message, "Creo que se te da bien hablar de Biksy cosas con gente random, eso tendrás que hacer.")
