@@ -4,7 +4,7 @@ import time
 from telebot import types
 from flask import Flask, request
 
-TOKEN = os.environ['BOT_TOKEN']
+TOKEN = '8067492976:AAH6-jnBPKIsG8Yb1tjN0jhGgrFvq9ErRWc'
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
 
@@ -19,7 +19,7 @@ def index():
     return "Bot funcionando!"
 
 if __name__ == "__main__":
-    render_url = os.environ.get("RENDER_EXTERNAL_URL")
+    render_url = 'https://biskedex.onrender.com'
     if render_url:
         bot.remove_webhook()
         bot.set_webhook(url=f"{render_url}/{TOKEN}")
