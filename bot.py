@@ -100,10 +100,11 @@ def guardar_nombre(message):
     bot.send_message(message.chat.id, f"Genial, *{nombre}* {genero} ", parse_mode='MarkdownV2')
     time.sleep(2)
     bot.send_message(message.chat.id, "Antes de empezar con la aventura, me parece importante que sepas que el servidor donde estoy alojado se conecta mediante eduroam 🥔")
+    time.sleep(4)
     with open('patata.jpg', 'rb') as patata:
         bot.send_photo(message.chat.id, patata)
 
-    time.sleep(1)
+    time.sleep(4)
     bot.send_message(message.chat.id, "Asi que, si no usas la Bikedex durante un rato, puede que al reconectar tarde un rato en buscar la señal")
 
     time.sleep(2)
@@ -112,10 +113,15 @@ def guardar_nombre(message):
     bot.send_message(message.chat.id, "...")
     time.sleep(2)
     bot.send_message(message.chat.id, "Veo que no tienes Biskymones, haremos que eso cambie no te preocupes.")
-    with open('miraculos.mp3', 'rb') as miraculos:
+    with open('audio1.mp3', 'rb') as miraculos:
         bot.send_audio(message.chat.id, miraculos)
+    time.sleep(1)
     bot.send_message(message.chat.id, "Ademas, yo conozco una forma de superar los gimnasios, digamos que de una forma... distinta, y a la vez conseguir Biskymones más facilmente")
    
+    latitude = 43.41649 
+    longitude = -2.94475
+    bot.send_location(message.chat.id, latitude, longitude)
+    bot.send_message(message.chat.id, "Aquí está la ubicación que pediste 📍")
     
 
 
