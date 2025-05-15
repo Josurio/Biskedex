@@ -110,7 +110,7 @@ def guardar_nombre(message):
 
 @bot.message_handler(func=lambda msg: msg.text.lower() == "video")
 def enviar_video(msg):
-    with open('output_quad.mp4', 'rb') as video:
+    with open('carp.mp4', 'rb') as video:
         bot.send_video(msg.chat.id, video, caption="Aquí tienes tu video 🎥")
 
 
