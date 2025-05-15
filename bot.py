@@ -3,7 +3,7 @@ import time
 from telebot import types
 from flask import Flask, request
 
-TOKEN = os.environ['8067492976:AAH6-jnBPKIsG8Yb1tjN0jhGgrFvq9ErRWc']
+TOKEN = '8067492976:AAH6-jnBPKIsG8Yb1tjN0jhGgrFvq9ErRWc'
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
 
@@ -20,7 +20,7 @@ def index():
 # Set webhook on start
 if __name__ == "__main__":
     bot.remove_webhook()
-    bot.set_webhook(url=f"{os.environ['RENDER_EXTERNAL_URL']}/{TOKEN}")
+    bot.set_webhook(url=f"{os.environ['	https://biskedex-bot.com']}/{TOKEN}")
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
 # Diccionario para guardar nombres por chat
