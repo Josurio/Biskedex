@@ -99,9 +99,9 @@ def guardar_nombre(message):
     
     bot.send_message(message.chat.id, f"Genial, *{nombre}* {genero} ", parse_mode='MarkdownV2')
     time.sleep(2)
-    bot.send_message(message.chat.id, "Antes de empezar con la aventura, me parce importante que sepas que el servidor donde estoy alojado se conecta mediante eduroam 🥔")
+    bot.send_message(message.chat.id, "Antes de empezar con la aventura, me parece importante que sepas que el servidor donde estoy alojado se conecta mediante eduroam 🥔")
     with open('patata.jpg', 'rb') as patata:
-        bot.send_photo(message.chat.id, patata, caption="Aquí tienes tu video 🎥")
+        bot.send_photo(message.chat.id, patata)
 
     bot.send_message(message.chat.id, "Asi que, si no usas la Bikedex durante un rato, puede que al reconectar tarde un rato en buscar la señal")
 
