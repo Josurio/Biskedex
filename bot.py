@@ -113,6 +113,10 @@ def enviar_video(msg):
     with open('output_quad.mp4', 'rb') as video:
         bot.send_video(msg.chat.id, video, caption="Aquí tienes tu video 🎥")
 
+
+
+
+# RENDER CONNECTION
 if __name__ == "__main__":
     render_url = 'https://biskedex.onrender.com'
     if render_url:
