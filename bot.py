@@ -1,9 +1,10 @@
+import os
 import telebot
 import time
 from telebot import types
 from flask import Flask, request
 
-TOKEN = '8067492976:AAH6-jnBPKIsG8Yb1tjN0jhGgrFvq9ErRWc'
+TOKEN = os.environ['8067492976:AAH6-jnBPKIsG8Yb1tjN0jhGgrFvq9ErRWc']
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
 
