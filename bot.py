@@ -25,8 +25,10 @@ if __name__ == "__main__":
         bot.set_webhook(url=f"{render_url}/{TOKEN}")
         print(f"Webhook seteado en {render_url}/{TOKEN}")
     else:
-        print("❌ ERROR: RENDER_EXTERNAL_URL no definido.")
+        print("❌ ERROR: RENDER_EXTERNAL_URL no definido. Saltando webhook setup.")
+    
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
 
 
 # Diccionario para guardar nombres por chat
