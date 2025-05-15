@@ -4,7 +4,7 @@ import time
 from telebot import types
 from flask import Flask, request
 
-TOKEN = os.environ['TOKEN']
+TOKEN = os.environ['BOT_TOKEN']
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
 
@@ -18,11 +18,16 @@ def webhook():
 def index():
     return "Bot funcionando!"
 
-# Set webhook on start
 if __name__ == "__main__":
-    bot.remove_webhook()
-    bot.set_webhook(url=f"{os.environ['RENDER_EXTERNAL_URL']}/{TOKEN}")
+    render_url = os.environ.get("RENDER_EXTERNAL_URL")
+    if render_url:
+        bot.remove_webhook()
+        bot.set_webhook(url=f"{render_url}/{TOKEN}")
+        print(f"Webhook seteado en {render_url}/{TOKEN}")
+    else:
+        print("❌ ERROR: RENDER_EXTERNAL_URL no definido.")
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
 
 # Diccionario para guardar nombres por chat
 usuarios = {}
