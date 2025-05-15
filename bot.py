@@ -103,9 +103,20 @@ def guardar_nombre(message):
     with open('patata.jpg', 'rb') as patata:
         bot.send_photo(message.chat.id, patata)
 
+    time.sleep(1)
     bot.send_message(message.chat.id, "Asi que, si no usas la Bikedex durante un rato, puede que al reconectar tarde un rato en buscar la señal")
 
-    bot.send_message(message.chat.id, "Pista")
+    time.sleep(2)
+    bot.send_message(message.chat.id, "La misión que se te encomienda es la de superar todos los gimnasios Biskymón.")
+    time.sleep(1)
+    bot.send_message(message.chat.id, "...")
+    time.sleep(2)
+    bot.send_message(message.chat.id, "Veo que no tienes Biskymones, haremos que eso cambie no te preocupes.")
+    with open('miraculos.mp3', 'rb') as miraculos:
+        bot.send_audio(message.chat.id, miraculos)
+    bot.send_message(message.chat.id, "Ademas, yo conozco una forma de superar los gimnasios, digamos que de una forma... distinta, y a la vez conseguir Biskymones más facilmente")
+   
+    
 
 
 @bot.message_handler(func=lambda msg: msg.text.lower() == "video")
