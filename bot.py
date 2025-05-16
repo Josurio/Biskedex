@@ -115,7 +115,7 @@ def guardar_nombre(message):
     bot.send_message(message.chat.id, "Veo que no tienes Biskymones, haremos que eso cambie no te preocupes.")
     with open('audio1.mp3', 'rb') as miraculos:
         bot.send_audio(message.chat.id, miraculos)
-    time.sleep(1)
+    time.sleep(5)
     bot.send_message(message.chat.id, "Ademas, yo conozco una forma de superar los gimnasios, digamos que de una forma... distinta, y a la vez conseguir Biskymones más facilmente.")
    
     time.sleep(3)
@@ -133,7 +133,7 @@ def manejar_ubicacion(message):
     bot.send_message(message.chat.id, lat)
    
     # Ejemplo simple de respuesta en función de coordenadas
-    if 43.41000 > lat:
+    if 43.41000 < lat< 43.42000 and -2.95000< lon< 2.94000:
         bot.reply_to(message, "¡Perfecto! Te encuentras debajo del gimnasio del viento, aqui moran los Biskymon tipo volador. Pero no intentes entrar... no somos bienvenidos.")
         bot.reply_to(message, "Para robar, digo, conseguir tus primeros Biskymón, tendras que distraer a la gente mientras otro compañero busca los Biskymón.")
         bot.reply_to(message, "Creo que se te da bien hablar de Biksy cosas con gente random, eso tendrás que hacer.")
