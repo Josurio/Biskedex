@@ -195,6 +195,7 @@ def manejar_ubicacion2(message):
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'aero')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Los tengo!":
+        types.ReplyKeyboardRemove()
         bot.send_message(msg.chat.id, "¡Wow los has atrapado!, Estos Biskymon son únicos, desde algunos con conductas extrañas 👉👈 hasta otros lorosmon que son muy utiles para corregir tu lenguaje poco aliade. Pero no te preocues, seguro que a mas de uno le cojes mucho cariño <3.")
         time.sleep(4)
         with open('mariposa.jpg', 'rb') as mari:
@@ -255,6 +256,7 @@ def responder_opciones(msg):
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'antena')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Encontrado!":  
+        types.ReplyKeyboardRemove()
         bot.send_message(msg.chat.id, "STOP")
 
 
