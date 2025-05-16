@@ -68,8 +68,7 @@ def responder_opciones(msg):
     else:
         bot.send_message(msg.chat.id, "No entendí eso. Escribe /start para volver al menú.")
     markup = types.ReplyKeyboardRemove()
-    bot.send_message(msg.chat.id,  reply_markup=markup)
-    bot.send_message(msg.chat.id, "Slay")
+    bot.send_message(msg.chat.id, "Slay", reply_markup=markup)
     time.sleep(0.8)
     bot.send_message(msg.chat.id, "...")
     time.sleep(0.8)
