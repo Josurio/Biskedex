@@ -137,7 +137,9 @@ def manejar_ubicacion1(message):
     # Ejemplo simple de respuesta en función de coordenadas
     if 43.26250 < lat< 43.26350 and -2.94500> lon> -2.95500:
         bot.reply_to(message, "¡Perfecto! Te encuentras debajo del gimnasio Cántico de Luz, aqui moran los Biskymon tipo hada. Pero para intentes entrar así por las buenas... no somos bienvenidos.")
+        time.sleep(4)
         bot.reply_to(message, "Para robar, digo, conseguir tus primeros Biskymón, tendras que distraer a los luchadores del gimnasio y luego buscar los Biskymón.")
+        time.sleep(3)
         bot.reply_to(message, "Creo que se te da bien hablar de Bisky cosas con gente random, eso tendrás que hacer.")
         time.sleep(2)
         with open('cat.mp4', 'rb') as cat:
@@ -158,9 +160,9 @@ def responder_opciones(msg):
     if msg.text == "✅ ¡Los tengo!":
         markup = types.ReplyKeyboardRemove()
         bot.send_message(msg.chat.id, "¡Genial!, ya tienes tus primeros Biskymón, tratalos con cariño, estos pueden manifestar dinero.",  reply_markup=markup)
-        time.sleep(2) 
+        time.sleep(5) 
         bot.send_message(msg.chat.id, "Ahora, nos dirigiremos a por los Biskymón del gimnasio Santuario del Cielo, pero ese lugar esta demasiado alto, asi que trataremos de atraer a algunos a nosotros.")
-        time.sleep(2)
+        time.sleep(6)
         bot.send_message(msg.chat.id, "Se que a algunos de los Biskymón de este gimansio se les alimenta con unos Biskymón tipo pez que nadan en aguas con alto contenido en alcohol.")
         time.sleep(2)
         with open('carp.mp4', 'rb') as video:
@@ -183,7 +185,9 @@ def manejar_ubicacion2(message):
 
     if 43.26550  < lat< 43.26650  and -2.93500> lon >-2.95500:
         bot.reply_to(message, "¡Increible!, ahora creo que uno de tus compañeros entrenadores tiene una caña para pescar, pidesela.")
+        time.sleep(2)
         bot.reply_to(message, "Cuando hayas pescado los borrachocarps, los Biskymon se acercarán a ti, avísame cuando los tengas.")
+        time.sleep(2)
         bot.reply_to(message, "Prueba 🎯: Debes buscar en el agua un paquete con tu caña imantada.")
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btn1 = types.KeyboardButton("✅ ¡Los tengo!")
@@ -207,21 +211,24 @@ def responder_opciones(msg):
         bot.send_message(msg.chat.id, "...")
         time.sleep(5)
         bot.send_message(msg.chat.id, "¡Oh no!")
+        time.sleep(1)
         with open('susto.mp4', 'rb') as susto:
             bot.send_video(msg.chat.id, susto)
-        time.sleep(2)
+        time.sleep(8)
         bot.send_message(msg.chat.id, "¡Un Biskymón que has capturado ha atraido a uno tipo eléctrico!")
-        time.sleep(2)
+        time.sleep(3)
         bot.send_message(msg.chat.id, "Lo bueno es que ya no tendremos que ir a capturarlos al gimnasio La Torre de los FrikiFaradios.")
         bot.send_message(msg.chat.id, "Lo malo es que habrá que luchar.")
-        time.sleep(2)
+        time.sleep(5)
         bot.send_message(msg.chat.id, "Y honestamente.")
         time.sleep(2)
         bot.send_message(msg.chat.id, "A tus Biskymon se les ve demasiado disociados como para luchar...")
-        bot.send_message(msg.chat.id, "Así que tendras que ser tu la que se meta de puños con ellos.")
-        with open('lucha.mp3', 'rb') as lucha:
-            bot.send_audio(msg.chat.id, lucha)
         time.sleep(2)
+        bot.send_message(msg.chat.id, "Así que tendras que ser tu la que se meta de puños con ellos.")
+        time.sleep(2)
+        with open('audio2.mp3', 'rb') as lucha:
+            bot.send_audio(msg.chat.id, lucha)
+        time.sleep(10)
         bot.reply_to(msg, "Prueba 🎯: JUEGO.")
         time.sleep(5)
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -255,7 +262,7 @@ def responder_opciones(msg):
         bot.send_message(msg.chat.id, "Avisame cuando lo encuentres:", reply_markup=markup)
         estados[msg.chat.id] = 'estruc'  
 
-@bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'antena')
+@bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'estruc')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Encontrado!":  
         markup = types.ReplyKeyboardRemove()
