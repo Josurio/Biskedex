@@ -134,7 +134,7 @@ def manejar_ubicacion1(message):
     bot.send_message(message.chat.id, lat)
    
     # Ejemplo simple de respuesta en función de coordenadas
-    if 43.26250 < lat< 43.26350 and -2.94500< lon< -2.95500:
+    if 43.26250 < lat< 43.26350 and -2.94500> lon> -2.95500:
         bot.reply_to(message, "¡Perfecto! Te encuentras debajo del gimnasio Cántico de Luz, aqui moran los Biskymon tipo hada. Pero para intentes entrar así por las buenas... no somos bienvenidos.")
         bot.reply_to(message, "Para robar, digo, conseguir tus primeros Biskymón, tendras que distraer a los luchadores del gimnasio y luego buscar los Biskymón.")
         bot.reply_to(message, "Creo que se te da bien hablar de Bisky cosas con gente random, eso tendrás que hacer.")
