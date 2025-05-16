@@ -121,22 +121,22 @@ def guardar_nombre(message):
     time.sleep(3)
     bot.send_message(message.chat.id, "De momento, te voy indicando la ubicación del primer, en cuanto llegues mandame la ubi para mandarte instrucciones")
    
-    latitude = 43.41649 
-    longitude = -2.94475
+    latitude = 43.262970
+    longitude = -2.949766
     bot.send_location(message.chat.id, latitude, longitude)
-    bot.send_message(message.chat.id, "Aquí está la ubicación que pediste 📍")
+    estados[message.chat.id] = 'ubi1'
     
-@bot.message_handler(content_types=['location'])
-def manejar_ubicacion(message):
+@bot.message_handler(content_types=['location'], func=lambda msg: estados.get(msg.chat.id) == 'ubi1')
+def manejar_ubicacion1(message):
     lat = message.location.latitude
     lon = message.location.longitude
     bot.send_message(message.chat.id, lon)
    
     # Ejemplo simple de respuesta en función de coordenadas
-    if 43.41000 < lat< 43.42000 and -2.95000< lon< 2.94000:
-        bot.reply_to(message, "¡Perfecto! Te encuentras debajo del gimnasio del viento, aqui moran los Biskymon tipo volador. Pero no intentes entrar... no somos bienvenidos.")
-        bot.reply_to(message, "Para robar, digo, conseguir tus primeros Biskymón, tendras que distraer a la gente mientras otro compañero busca los Biskymón.")
-        bot.reply_to(message, "Creo que se te da bien hablar de Biksy cosas con gente random, eso tendrás que hacer.")
+    if 43.26250 < lat< 43.26350 and -2.94500< lon< 2.95500:
+        bot.reply_to(message, "¡Perfecto! Te encuentras debajo del gimnasio Cántico de Luz, aqui moran los Biskymon tipo hada. Pero para intentes entrar así por las buenas... no somos bienvenidos.")
+        bot.reply_to(message, "Para robar, digo, conseguir tus primeros Biskymón, tendras que distraer a los luchadores del gimnasio y luego buscar los Biskymón.")
+        bot.reply_to(message, "Creo que se te da bien hablar de Bisky cosas con gente random, eso tendrás que hacer.")
         time.sleep(2)
         with open('cat.mp4', 'rb') as cat:
             bot.send_video(message.chat.id, cat)
@@ -146,17 +146,114 @@ def manejar_ubicacion(message):
         btn1 = types.KeyboardButton("✅ ¡Los tengo!")
         markup.add(btn1)
         bot.send_message(message.chat.id, "Avisame cuando tengas los Biskymón:", reply_markup=markup)
-        estados[message.chat.id] = 'viento'
+        estados[message.chat.id] = 'bim'
     else:
         bot.reply_to(message, "¡Aún estás lejos!, Avísame cuando hayas llegado")
 
 
-@bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'viento')
+@bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'bim')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Los tengo!":
-        if msg.chat.id not in usuarios:
-            usuarios[msg.chat.id] = {}  # Creamos un sub-diccionario para ese usuario si no existe
-        usuarios[msg.chat.id]['genero'] = '👦'  # Guardamos el género
+        bot.send_message(msg.chat.id, "¡Genial!, ya tienes tus primeros Biskymón, tratalos con cariño, estos pueden manifestar dinero.")
+        time.sleep(2) 
+        bot.send_message(msg.chat.id, "Ahora, nos dirigiremos a por los Biskymón del gimnasio Santuario del Cielo, pero ese lugar esta demasiado alto, asi que trataremos de atraer a algunos a nosotros.")
+        time.sleep(2)
+        bot.send_message(msg.chat.id, "Se que a algunos de los Biskymón de este gimansio se les alimenta con unos Biskymón tipo pez que nadan en aguas con alto contenido en alcohol.")
+        time.sleep(2)
+        with open('carp.mp4', 'rb') as video:
+            bot.send_video(msg.chat.id, video)
+        time.sleep(5)
+        bot.send_message(msg.chat.id, "Pero tranquila, se donde estan esas aguas.")
+        latitude = 43.265772 
+        longitude = -2.942158
+        bot.send_location(msg.chat.id, latitude, longitude)
+
+        bot.send_message(msg.chat.id, "Pero tranquila, se donde estan esas aguas.")
+        estados[msg.chat.id] = 'ubi2'
+
+@bot.message_handler(content_types=['location'], func=lambda msg: estados.get(msg.chat.id) == 'ubi2')
+def manejar_ubicacion2(message):
+    lat = message.location.latitude
+    lon = message.location.longitude
+    bot.send_message(message.chat.id, lon)
+
+    if 43.26550  < lat< 43.26650  and -2.95000< lon< 2.94000:
+        bot.reply_to(message, "¡Increible!, ahora creo que uno de tus compañeros entrenadores tiene una caña para pescar, pidesela.")
+        bot.reply_to(message, "Cuando hayas pescado los borrachocarps, los Biskymon se acercarán a ti, avísame cuando los tengas.")
+        bot.reply_to(message, "Prueba 🎯: Debes buscar en el agua un paquete con tu caña imantada.")
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn1 = types.KeyboardButton("✅ ¡Los tengo!")
+        markup.add(btn1)
+        bot.send_message(message.chat.id, "Avisame cuando tengas los Biskymón:", reply_markup=markup)
+        estados[message.chat.id] = 'aero'
+    else:
+        bot.reply_to(message, "¡Aún estás lejos!, Avísame cuando hayas llegado")
+
+@bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'aero')
+def responder_opciones(msg):
+    if msg.text == "✅ ¡Los tengo!":
+        bot.send_message(msg.chat.id, "¡Wow los has atrapado!, Estos Biskymon son únicos, desde algunos con conductas extrañas 👉👈 hasta otros lorosmon que son muy utiles para corregir tu lenguaje poco aliade. Pero no te preocues, seguro que a mas de uno le cojes mucho cariño <3.")
+        time.sleep(4)
+        with open('mariposa.jpg', 'rb') as mari:
+            bot.send_photo(msg.chat.id, mari)
+        time.sleep(4)
+        bot.send_message(msg.chat.id, "...")
+        time.sleep(3)
+        bot.send_message(msg.chat.id, "...")
+        time.sleep(5)
+        bot.send_message(msg.chat.id, "¡Oh no!")
+        with open('susto.mp4', 'rb') as susto:
+            bot.send_video(msg.chat.id, susto)
+        time.sleep(2)
+        bot.send_message(msg.chat.id, "¡Un Biskymón que has capturado ha atraido a uno tipo eléctrico!")
+        time.sleep(2)
+        bot.send_message(msg.chat.id, "Lo bueno es que ya no tendremos que ir a capturarlos al gimnasio La Torre de los FrikiFaradios.")
+        bot.send_message(msg.chat.id, "Lo malo es que habrá que luchar.")
+        time.sleep(2)
+        bot.send_message(msg.chat.id, "Y honestamente.")
+        time.sleep(2)
+        bot.send_message(msg.chat.id, "A tus Biskymon se les ve demasiado disociados como para luchar...")
+        bot.send_message(msg.chat.id, "Así que tendras que ser tu la que se meta de puños con ellos.")
+        with open('lucha.mp3', 'rb') as lucha:
+            bot.send_audio(msg.chat.id, lucha)
+        time.sleep(2)
+        bot.reply_to(msg, "Prueba 🎯: JUEGO.")
+        time.sleep(5)
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn1 = types.KeyboardButton("✅ ¡Derrotados!")
+        markup.add(btn1)
+        bot.send_message(msg.chat.id, "Avisame cuando termines la batalla:", reply_markup=markup)
+        estados[msg.chat.id] = 'antena'    
+
+@bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'antena')
+def responder_opciones(msg):
+    if msg.text == "✅ ¡Derrotados!":
+        bot.send_message(msg.chat.id, "No tenia mucha fe en ti pero... ¡Me alegro!")
+        time.sleep(2) 
+        bot.send_message(msg.chat.id, "Estos ejemplares son un poco raretes y escurridizos, pero unos gran compañeros.")
+        time.sleep(2)
+        with open('linux.mp4', 'rb') as linux:
+            bot.send_video(msg.chat.id, linux)
+        time.sleep(6)
+        bot.send_message(msg.chat.id, "¡ALERTA!")
+        bot.send_message(msg.chat.id, "Acabo de recibir que un Biskymon se ha escapado del gimnasio Centro de control del delirio.")
+        time.sleep(2)
+        bot.send_message(msg.chat.id, "Te mando su última ubicación, ¡Corre a buscarlo!")
+
+        latitude = 43.265772 
+        longitude = -2.942158
+        bot.send_location(msg.chat.id, latitude, longitude)
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        btn1 = types.KeyboardButton("✅ ¡Encontrado!")
+        markup.add(btn1)
+        bot.send_message(msg.chat.id, "Avisame cuando lo encuentres:", reply_markup=markup)
+        estados[msg.chat.id] = 'estruc'  
+
+@bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'antena')
+def responder_opciones(msg):
+    if msg.text == "✅ ¡Encontrado!":  
+        bot.send_message(msg.chat.id, "STOP")
+
 
 @bot.message_handler(func=lambda msg: msg.text.lower() == "video")
 def enviar_video(msg):
