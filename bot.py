@@ -130,7 +130,8 @@ def guardar_nombre(message):
 def manejar_ubicacion(message):
     lat = message.location.latitude
     lon = message.location.longitude
-
+    bot.send_message(message.chat.id, lat)
+   
     # Ejemplo simple de respuesta en función de coordenadas
     if 43.41000 > lat:
         bot.reply_to(message, "¡Perfecto! Te encuentras debajo del gimnasio del viento, aqui moran los Biskymon tipo volador. Pero no intentes entrar... no somos bienvenidos.")
