@@ -179,8 +179,9 @@ def manejar_ubicacion2(message):
     lat = message.location.latitude
     lon = message.location.longitude
     bot.send_message(message.chat.id, lon)
+    bot.send_message(message.chat.id, lat)
 
-    if 43.26550  < lat< 43.26650  and -2.94500> lon >-2.95500:
+    if 43.26550  < lat< 43.26650  and -2.94000> lon >-2.95500:
         bot.reply_to(message, "¡Increible!, ahora creo que uno de tus compañeros entrenadores tiene una caña para pescar, pidesela.")
         bot.reply_to(message, "Cuando hayas pescado los borrachocarps, los Biskymon se acercarán a ti, avísame cuando los tengas.")
         bot.reply_to(message, "Prueba 🎯: Debes buscar en el agua un paquete con tu caña imantada.")
