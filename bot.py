@@ -137,7 +137,7 @@ def manejar_ubicacion1(message):
    
     # Ejemplo simple de respuesta en función de coordenadas
     if 43.26250 < lat< 43.26350 and -2.94500> lon> -2.95500:
-        bot.reply_to(message, f" {usuarios[message.chat.id]['nombre']} ¡Perfecto! Te encuentras debajo del gimnasio Cántico de Luz, aquí moran los Biskymon tipo hada. Pero para intentes entrar así por las buenas... no somos bienvenidos.")
+        bot.reply_to(message, f"{usuarios[message.chat.id]['nombre']} ¡Perfecto! Te encuentras debajo del gimnasio Cántico de Luz, aquí moran los Biskymon tipo hada. Pero para intentes entrar así por las buenas... no somos bienvenidos.")
         time.sleep(4)
         bot.reply_to(message, "Para robar, digo, conseguir tus primeros Biskymon, tendrás que distraer a los luchadores del gimnasio y luego buscar los Biskymon.")
         time.sleep(3)
@@ -336,7 +336,7 @@ def responder_opciones(msg):
         with open('lloro.mp4', 'rb') as lloro:
             bot.send_video(msg.chat.id, lloro)
         time.sleep(7)
-        bot.send_message(msg.chat.id, "Pero ha sido un placer acompañarte en esta aventura. ¡Suerte!")
+        bot.send_message(msg.chat.id, f"Pero ha sido un placer acompañarte en esta aventura {usuarios[msg.chat.id]['nombre']}. ¡Suerte!")
         with open('OUTRO.mp3', 'rb') as outro:
             bot.send_audio(msg.chat.id, outro)
         time.sleep(3)
