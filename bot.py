@@ -157,8 +157,7 @@ def manejar_ubicacion1(message):
 def responder_opciones(msg):
     if msg.text == "✅ ¡Los tengo!":
         markup = types.ReplyKeyboardRemove()
-        bot.send_message(msg.chat.id,  reply_markup=markup)
-        bot.send_message(msg.chat.id, "¡Genial!, ya tienes tus primeros Biskymón, tratalos con cariño, estos pueden manifestar dinero.")
+        bot.send_message(msg.chat.id, "¡Genial!, ya tienes tus primeros Biskymón, tratalos con cariño, estos pueden manifestar dinero.",  reply_markup=markup)
         time.sleep(2) 
         bot.send_message(msg.chat.id, "Ahora, nos dirigiremos a por los Biskymón del gimnasio Santuario del Cielo, pero ese lugar esta demasiado alto, asi que trataremos de atraer a algunos a nosotros.")
         time.sleep(2)
@@ -198,8 +197,7 @@ def manejar_ubicacion2(message):
 def responder_opciones(msg):
     if msg.text == "✅ ¡Los tengo!":
         markup = types.ReplyKeyboardRemove()
-        bot.send_message(msg.chat.id,  reply_markup=markup)
-        bot.send_message(msg.chat.id, "¡Wow los has atrapado!, Estos Biskymon son únicos, desde algunos con conductas extrañas 👉👈 hasta otros lorosmon que son muy utiles para corregir tu lenguaje poco aliade. Pero no te preocues, seguro que a mas de uno le cojes mucho cariño <3.")
+        bot.send_message(msg.chat.id, "¡Wow los has atrapado!, Estos Biskymon son únicos, desde algunos con conductas extrañas 👉👈 hasta otros lorosmon que son muy utiles para corregir tu lenguaje poco aliade. Pero no te preocues, seguro que a mas de uno le cojes mucho cariño <3.",  reply_markup=markup)
         time.sleep(4)
         with open('mariposa.jpg', 'rb') as mari:
             bot.send_photo(msg.chat.id, mari)
@@ -236,8 +234,7 @@ def responder_opciones(msg):
 def responder_opciones(msg):
     if msg.text == "✅ ¡Derrotados!":
         markup = types.ReplyKeyboardRemove()
-        bot.send_message(msg.chat.id,  reply_markup=markup)
-        bot.send_message(msg.chat.id, "No tenia mucha fe en ti pero... ¡Me alegro!")
+        bot.send_message(msg.chat.id, "No tenia mucha fe en ti pero... ¡Me alegro!",  reply_markup=markup)
         time.sleep(2) 
         bot.send_message(msg.chat.id, "Estos ejemplares son un poco raretes y escurridizos, pero unos gran compañeros.")
         time.sleep(2)
@@ -262,8 +259,7 @@ def responder_opciones(msg):
 def responder_opciones(msg):
     if msg.text == "✅ ¡Encontrado!":  
         markup = types.ReplyKeyboardRemove()
-        bot.send_message(msg.chat.id,  reply_markup=markup)
-        bot.send_message(msg.chat.id, "STOP")
+        bot.send_message(msg.chat.id, "STOP",  reply_markup=markup)
 
 
 @bot.message_handler(func=lambda msg: msg.text.lower() == "video")
