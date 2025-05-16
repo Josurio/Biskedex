@@ -67,6 +67,7 @@ def responder_opciones(msg):
         usuarios[msg.chat.id]['genero'] = '👩‍🔧'  # Guardamos el género
     else:
         bot.send_message(msg.chat.id, "No entendí eso. Escribe /start para volver al menú.")
+    types.ReplyKeyboardRemove()
     bot.send_message(msg.chat.id, "Slay")
     time.sleep(0.8)
     bot.send_message(msg.chat.id, "...")
@@ -155,6 +156,7 @@ def manejar_ubicacion1(message):
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'bim')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Los tengo!":
+        types.ReplyKeyboardRemove()
         bot.send_message(msg.chat.id, "¡Genial!, ya tienes tus primeros Biskymón, tratalos con cariño, estos pueden manifestar dinero.")
         time.sleep(2) 
         bot.send_message(msg.chat.id, "Ahora, nos dirigiremos a por los Biskymón del gimnasio Santuario del Cielo, pero ese lugar esta demasiado alto, asi que trataremos de atraer a algunos a nosotros.")
@@ -169,7 +171,7 @@ def responder_opciones(msg):
         longitude = -2.942158
         bot.send_location(msg.chat.id, latitude, longitude)
 
-        bot.send_message(msg.chat.id, "Pero tranquila, se donde estan esas aguas.")
+        bot.send_message(msg.chat.id, "Mandame tu ubicación cuando estés.")
         estados[msg.chat.id] = 'ubi2'
 
 @bot.message_handler(content_types=['location'], func=lambda msg: estados.get(msg.chat.id) == 'ubi2')
@@ -178,7 +180,7 @@ def manejar_ubicacion2(message):
     lon = message.location.longitude
     bot.send_message(message.chat.id, lon)
 
-    if 43.26550  < lat< 43.26650  and -2.94500< lon< -2.95500:
+    if 43.26550  < lat< 43.26650  and -2.94500> lon >-2.95500:
         bot.reply_to(message, "¡Increible!, ahora creo que uno de tus compañeros entrenadores tiene una caña para pescar, pidesela.")
         bot.reply_to(message, "Cuando hayas pescado los borrachocarps, los Biskymon se acercarán a ti, avísame cuando los tengas.")
         bot.reply_to(message, "Prueba 🎯: Debes buscar en el agua un paquete con tu caña imantada.")
