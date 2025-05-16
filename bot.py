@@ -28,15 +28,15 @@ def saludar(message):
     estados[message.chat.id] = 'genero'
     with open('INTRO.mp3', 'rb') as intro:
         bot.send_audio(message.chat.id, intro)
-    time.sleep(2)
-    bot.reply_to(message, "¡Hola entrenadorx Biskymón! Bienvenida a la Biskedex, este dispositivo que se te a entregado tiene múltiples funciones que te ayudarán en tu aventura, pero antes necesito saber como referirme a ti. Escribe el género con el que te sientes mejor identificx:")
+    time.sleep(8)
+    bot.reply_to(message, "¡Hola entrenadorx Biskymon! Bienvenidx a la Biskedex, este dispositivo que se te ha entregado tiene múltiples funciones que te ayudarán en tu aventura, pero antes necesito saber como referirme a ti. Escribe el género con el que te sientes mejor identificx:")
 
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     btn1 = types.KeyboardButton("👦 Masculino")
     btn2 = types.KeyboardButton("👧 Femenino")
-    btn3 = types.KeyboardButton("🪼 No binario")
+    btn3 = types.KeyboardButton("🪼 No Binario")
     btn4 = types.KeyboardButton("🦖 Otro")
-    btn5 = types.KeyboardButton("🚁 Helicoptero apache")
+    btn5 = types.KeyboardButton("🚁 Helicóptero Apache")
     btn6 = types.KeyboardButton("👩‍🔧 Chief")
     markup.add(btn1, btn2, btn3, btn4, btn5, btn6)
 
@@ -52,7 +52,7 @@ def responder_opciones(msg):
         if msg.chat.id not in usuarios:
             usuarios[msg.chat.id] = {}  # Creamos un sub-diccionario para ese usuario si no existe
         usuarios[msg.chat.id]['genero'] = '👧'  # Guardamos el género
-    elif msg.text == "🪼 No binario":
+    elif msg.text == "🪼 No Binario":
         if msg.chat.id not in usuarios:
             usuarios[msg.chat.id] = {}  # Creamos un sub-diccionario para ese usuario si no existe
         usuarios[msg.chat.id]['genero'] = '🪼'  # Guardamos el género
@@ -60,7 +60,7 @@ def responder_opciones(msg):
         if msg.chat.id not in usuarios:
             usuarios[msg.chat.id] = {}  # Creamos un sub-diccionario para ese usuario si no existe
         usuarios[msg.chat.id]['genero'] = '🦖'  # Guardamos el género
-    elif msg.text == "🚁 Helicoptero apache":
+    elif msg.text == "🚁 Helicóptero Apache":
         if msg.chat.id not in usuarios:
             usuarios[msg.chat.id] = {}  # Creamos un sub-diccionario para ese usuario si no existe
         usuarios[msg.chat.id]['genero'] = '🚁'  # Guardamos el género
@@ -109,10 +109,10 @@ def guardar_nombre(message):
         bot.send_photo(message.chat.id, patata)
 
     time.sleep(4)
-    bot.send_message(message.chat.id, "Asi que, si no usas la Biskedex durante un rato, puede que al reconectar tarde un rato en buscar la señal.")
+    bot.send_message(message.chat.id, "Así que, si no usas la Biskedex durante un rato, puede que al reconectar tarde un rato en buscar la señal.")
 
     time.sleep(2)
-    bot.send_message(message.chat.id, "La misión que se te encomienda es la de superar todos los gimnasios Biskymón.")
+    bot.send_message(message.chat.id, "La misión que se te encomienda es la de superar todos los gimnasios Biskymon.")
     time.sleep(1)
     bot.send_message(message.chat.id, "...")
     time.sleep(2)
@@ -120,10 +120,10 @@ def guardar_nombre(message):
     with open('audio1.mp3', 'rb') as miraculos:
         bot.send_audio(message.chat.id, miraculos)
     time.sleep(5)
-    bot.send_message(message.chat.id, "Ademas, yo conozco una forma de superar los gimnasios, digamos que de una forma... distinta, y a la vez conseguir Biskymones más facilmente.")
+    bot.send_message(message.chat.id, "Además, yo conozco una forma de superar los gimnasios, digamos que de una forma... distinta, y a la vez conseguir Biskymones más facilmente.")
    
     time.sleep(3)
-    bot.send_message(message.chat.id, "De momento, te voy indicando la ubicación del primer, en cuanto llegues mandame la ubi para mandarte instrucciones")
+    bot.send_message(message.chat.id, "De momento, te voy indicando la ubicación del primer, en cuanto llegues mandame la ubi para mandarte instrucciones.")
    
     latitude = 43.262970
     longitude = -2.949766
@@ -137,9 +137,9 @@ def manejar_ubicacion1(message):
    
     # Ejemplo simple de respuesta en función de coordenadas
     if 43.26250 < lat< 43.26350 and -2.94500> lon> -2.95500:
-        bot.reply_to(message, "¡Perfecto! Te encuentras debajo del gimnasio Cántico de Luz, aqui moran los Biskymon tipo hada. Pero para intentes entrar así por las buenas... no somos bienvenidos.")
+        bot.reply_to(message, "¡Perfecto! Te encuentras debajo del gimnasio Cántico de Luz, aquí moran los Biskymon tipo hada. Pero para intentes entrar así por las buenas... no somos bienvenidos.")
         time.sleep(4)
-        bot.reply_to(message, "Para robar, digo, conseguir tus primeros Biskymón, tendras que distraer a los luchadores del gimnasio y luego buscar los Biskymón.")
+        bot.reply_to(message, "Para robar, digo, conseguir tus primeros Biskymon, tendrás que distraer a los luchadores del gimnasio y luego buscar los Biskymon.")
         time.sleep(3)
         bot.reply_to(message, "Creo que se te da bien hablar de Bisky cosas con gente random, eso tendrás que hacer.")
         time.sleep(2)
@@ -150,31 +150,31 @@ def manejar_ubicacion1(message):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btn1 = types.KeyboardButton("✅ ¡Los tengo!")
         markup.add(btn1)
-        bot.send_message(message.chat.id, "Avisame cuando tengas los Biskymón:", reply_markup=markup)
+        bot.send_message(message.chat.id, "Avisame cuando tengas los Biskymon:", reply_markup=markup)
         estados[message.chat.id] = 'bim'
     else:
-        bot.reply_to(message, "¡Aún estás lejos!, Avísame cuando hayas llegado")
+        bot.reply_to(message, "¡Aún estás lejos!, Avísame cuando hayas llegado.")
 
 
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'bim')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Los tengo!":
         markup = types.ReplyKeyboardRemove()
-        bot.send_message(msg.chat.id, "¡Genial!, ya tienes tus primeros Biskymón, tratalos con cariño, estos pueden manifestar dinero.",  reply_markup=markup)
+        bot.send_message(msg.chat.id, "¡Genial!, ya tienes tus primeros Biskymon, tratalos con cariño, estos pueden manifestar dinero.",  reply_markup=markup)
         time.sleep(5) 
-        bot.send_message(msg.chat.id, "Ahora, nos dirigiremos a por los Biskymón del gimnasio Santuario del Cielo, pero ese lugar esta demasiado alto, asi que trataremos de atraer a algunos a nosotros.")
+        bot.send_message(msg.chat.id, "Ahora, nos dirigiremos a por los Biskymon del gimnasio Santuario del Cielo, pero ese lugar esta demasiado alto, asi que trataremos de atraer a algunos a nosotros.")
         time.sleep(6)
-        bot.send_message(msg.chat.id, "Se que a algunos de los Biskymón de este gimansio se les alimenta con unos Biskymón tipo pez que nadan en aguas con alto contenido en alcohol.")
+        bot.send_message(msg.chat.id, "Se que a algunos de los Biskymon de este gimansio se les alimenta con unos Biskymon tipo pez que nadan en aguas con alto contenido en alcohol.")
         time.sleep(2)
         with open('carp.mp4', 'rb') as video:
             bot.send_video(msg.chat.id, video)
         time.sleep(5)
-        bot.send_message(msg.chat.id, "Pero tranquila, se donde estan esas aguas.")
+        bot.send_message(msg.chat.id, "Pero tranquila, se dónde estan esas aguas.")
         latitude = 43.265772 
         longitude = -2.942158
         bot.send_location(msg.chat.id, latitude, longitude)
 
-        bot.send_message(msg.chat.id, "Mandame tu ubicación cuando estés.")
+        bot.send_message(msg.chat.id, "Mándame tu ubicación cuando estés.")
         estados[msg.chat.id] = 'ubi2'
 
 @bot.message_handler(content_types=['location'], func=lambda msg: estados.get(msg.chat.id) == 'ubi2')
@@ -183,7 +183,7 @@ def manejar_ubicacion2(message):
     lon = message.location.longitude
 
     if 43.26550  < lat< 43.26650  and -2.93500> lon >-2.95500:
-        bot.reply_to(message, "¡Increible!, ahora creo que uno de tus compañeros entrenadores tiene una caña para pescar, pidesela.")
+        bot.reply_to(message, "¡Increible!, ahora creo que uno de tus compañeros entrenadores tiene una caña para pescar, pídesela.")
         time.sleep(2)
         bot.reply_to(message, "Cuando hayas pescado los borrachocarps, los Biskymon se acercarán a ti, avísame cuando los tengas.")
         time.sleep(2)
@@ -191,16 +191,16 @@ def manejar_ubicacion2(message):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btn1 = types.KeyboardButton("✅ ¡Los tengo!")
         markup.add(btn1)
-        bot.send_message(message.chat.id, "Avisame cuando tengas los Biskymón:", reply_markup=markup)
+        bot.send_message(message.chat.id, "Avisame cuando tengas los Biskymon:", reply_markup=markup)
         estados[message.chat.id] = 'aero'
     else:
-        bot.reply_to(message, "¡Aún estás lejos!, Avísame cuando hayas llegado")
+        bot.reply_to(message, "¡Aún estás lejos!, Avísame cuando hayas llegado.")
 
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'aero')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Los tengo!":
         markup = types.ReplyKeyboardRemove()
-        bot.send_message(msg.chat.id, "¡Wow los has atrapado!, Estos Biskymon son únicos, desde algunos con conductas extrañas 👉👈 hasta otros lorosmon que son muy utiles para corregir tu lenguaje poco aliade. Pero no te preocues, seguro que a mas de uno le cojes mucho cariño <3.",  reply_markup=markup)
+        bot.send_message(msg.chat.id, "¡Wow los has atrapado!, Estos Biskymon son únicos, desde algunos con conductas extrañas 👉👈 hasta otros lorosmon que son muy utiles para corregir tu lenguaje poco aliade. Pero no te preocues, seguro que a más de uno le cojes mucho cariño <3.",  reply_markup=markup)
         time.sleep(4)
         with open('mariposa.jpg', 'rb') as mari:
             bot.send_photo(msg.chat.id, mari)
@@ -214,7 +214,7 @@ def responder_opciones(msg):
         with open('susto.mp4', 'rb') as susto:
             bot.send_video(msg.chat.id, susto)
         time.sleep(8)
-        bot.send_message(msg.chat.id, "¡Un Biskymón que has capturado ha atraido a uno tipo eléctrico!")
+        bot.send_message(msg.chat.id, "¡Un Biskymon que has capturado ha atraido a uno tipo eléctrico!")
         time.sleep(3)
         bot.send_message(msg.chat.id, "Lo bueno es que ya no tendremos que ir a capturarlos al gimnasio La Torre de los FrikiFaradios.")
         bot.send_message(msg.chat.id, "Lo malo es que habrá que luchar.")
@@ -233,14 +233,14 @@ def responder_opciones(msg):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btn1 = types.KeyboardButton("✅ ¡Derrotados!")
         markup.add(btn1)
-        bot.send_message(msg.chat.id, "Avisame cuando termines la batalla:", reply_markup=markup)
+        bot.send_message(msg.chat.id, "Avísame cuando termines la batalla:", reply_markup=markup)
         estados[msg.chat.id] = 'antena'    
 
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'antena')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Derrotados!":
         markup = types.ReplyKeyboardRemove()
-        bot.send_message(msg.chat.id, "No tenia mucha fe en ti pero... ¡Me alegro!",  reply_markup=markup)
+        bot.send_message(msg.chat.id, "No tenía mucha fé en tí pero... ¡Me alegro!",  reply_markup=markup)
         time.sleep(2) 
         bot.send_message(msg.chat.id, "Estos ejemplares son un poco raretes y escurridizos, pero unos gran compañeros.")
         time.sleep(2)
@@ -258,37 +258,37 @@ def responder_opciones(msg):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btn1 = types.KeyboardButton("✅ ¡Encontrado!")
         markup.add(btn1)
-        bot.send_message(msg.chat.id, "Avisame cuando lo encuentres:", reply_markup=markup)
+        bot.send_message(msg.chat.id, "Avísame cuando lo encuentres:", reply_markup=markup)
         estados[msg.chat.id] = 'estruc'  
 
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'estruc')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Encontrado!":  
         markup = types.ReplyKeyboardRemove()
-        bot.send_message(msg.chat.id, "Estos Biskymon podrán parecer perezosos, pero con el lider apropiado son los mejores trabajando. ¡Entre estos Biskymón hay uno legendario!",  reply_markup=markup)
+        bot.send_message(msg.chat.id, "Estos Biskymon podrán parecer perezosos, pero con el lider apropiado son los mejores trabajando. ¡Entre estos Biskymon hay uno legendario!",  reply_markup=markup)
         time.sleep(4)
         bot.send_message(msg.chat.id, "...")
         time.sleep(2)
-        bot.send_message(msg.chat.id, "Resulta que este jardin pertenece al gimnasio Armastrux, donde viven los Biskymón de tipo acero.")
+        bot.send_message(msg.chat.id, "Resulta que este jardín pertenece al gimnasio Armastrux, donde viven los Biskymon de tipo acero.")
         time.sleep(1)
-        bot.send_message(msg.chat.id, "Los Biskymón de este gimnasio son orgullosos.")
+        bot.send_message(msg.chat.id, "Los Biskymon de este gimnasio son orgullosos.")
         time.sleep(5)
-        bot.send_message(msg.chat.id, "Pero con el señuelo adecuado los puedes atraer.¡Igual incluso te aconsejan de como hacer maun mejor tu señuelo! Avisame cuando veas los Biskymón.")
+        bot.send_message(msg.chat.id, "Pero con el señuelo adecuado los puedes atraer. ¡Igual incluso te aconsejan de como hacer maun mejor tu señuelo! Avísame cuando veas los Biskymon.")
         with open('mans.jpg', 'rb') as mans:
             bot.send_photo(msg.chat.id, mans)
         time.sleep(3)
-        bot.send_message(msg.chat.id, "Prueba 🎯: Debes hacer una torre humana de 4 pisos siendo tu la punta.")
+        bot.send_message(msg.chat.id, "Prueba 🎯: Debes hacer una torre humana de 4 pisos siendo tú la punta.")
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        btn1 = types.KeyboardButton("✅ ¡Los tengó!")
+        btn1 = types.KeyboardButton("✅ ¡Los tengo!")
         markup.add(btn1)
-        bot.send_message(msg.chat.id, "Avisame cuando los tengas:", reply_markup=markup)
+        bot.send_message(msg.chat.id, "Avísame cuando los tengas:", reply_markup=markup)
         estados[msg.chat.id] = 'prop'  
 
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'prop')
 def responder_opciones(msg):
-    if msg.text == "✅ ¡Los tengó!":  
+    if msg.text == "✅ ¡Los tengo!":  
         markup = types.ReplyKeyboardRemove()
-        bot.send_message(msg.chat.id, "¡Genial! Estos Biskymón son inteligentes, ocurrentes y muy habladores... ¡Siempre te sorprenderán para bien!",  reply_markup=markup)
+        bot.send_message(msg.chat.id, "¡Genial! Estos Biskymon son inteligentes, ocurrentes y muy habladores... ¡Siempre te sorprenderán para bien!",  reply_markup=markup)
         time.sleep(4)
         bot.send_message(msg.chat.id, "¡Ya solo queda un gimnasio!")
         time.sleep(2)
@@ -304,34 +304,34 @@ def responder_opciones(msg):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btn1 = types.KeyboardButton("✅ ¡Ya he recogido la comida!")
         markup.add(btn1)
-        bot.send_message(msg.chat.id, "Avisame cuando la tengas:", reply_markup=markup)
+        bot.send_message(msg.chat.id, "Avísame cuando la tengas:", reply_markup=markup)
         estados[msg.chat.id] = 'liga' 
 
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'liga')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Ya he recogido la comida!":  
         markup = types.ReplyKeyboardRemove()
-        bot.send_message(msg.chat.id, "Estos últimos Biskymón son luchadores a más no poder, no desisten cuando se trata de terminar algo...",  reply_markup=markup)
+        bot.send_message(msg.chat.id, "Estos últimos Biskymon son luchadores a más no poder, no desisten cuando se trata de terminar algo...",  reply_markup=markup)
         time.sleep(4)
         bot.send_message(msg.chat.id, "¡Increible!")
         time.sleep(2)
-        bot.send_message(msg.chat.id, "Has logrado todos los gimnasios diva")
+        bot.send_message(msg.chat.id, "Has logrado todos los gimnasios... ¡Diva!")
         time.sleep(6)
         with open('audio3.mp3', 'rb') as lucha:
             bot.send_audio(msg.chat.id, lucha)
-        bot.send_message(msg.chat.id, "¡Vamos a la liga Biskymón!")
+        bot.send_message(msg.chat.id, "¡Vamos a la liga Biskymon!")
         time.sleep(3)
         bot.send_message(msg.chat.id, "...")
         time.sleep(3)
-        bot.send_message(msg.chat.id, "No vamos a luchar no te preocupes")
+        bot.send_message(msg.chat.id, "No vamos a luchar no te preocupes.")
         time.sleep(3)
-        bot.send_message(msg.chat.id, "En la liga Biskymón solo se zampa")
+        bot.send_message(msg.chat.id, "En la liga Biskymon solo se zampa.")
         time.sleep(3)
-        bot.send_message(msg.chat.id, "Aqui te dejo la ubicación")
+        bot.send_message(msg.chat.id, "Aqui te dejo la ubicación.")
         time.sleep(5)
         bot.send_message(msg.chat.id, "...")
         time.sleep(3)
-        bot.send_message(msg.chat.id, "Nosotros ya nos despedimos, no te puedo acompañar a la liga Biskymón")
+        bot.send_message(msg.chat.id, "Nosotros ya nos despedimos, no te puedo acompañar a la liga Biskymon.")
         time.sleep(3)
         with open('lloro.mp4', 'rb') as lloro:
             bot.send_video(msg.chat.id, lloro)
