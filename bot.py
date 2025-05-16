@@ -67,7 +67,8 @@ def responder_opciones(msg):
         usuarios[msg.chat.id]['genero'] = '👩‍🔧'  # Guardamos el género
     else:
         bot.send_message(msg.chat.id, "No entendí eso. Escribe /start para volver al menú.")
-    types.ReplyKeyboardRemove()
+    markup = types.ReplyKeyboardRemove()
+    bot.send_message(msg.chat.id,  reply_markup=markup)
     bot.send_message(msg.chat.id, "Slay")
     time.sleep(0.8)
     bot.send_message(msg.chat.id, "...")
@@ -156,7 +157,8 @@ def manejar_ubicacion1(message):
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'bim')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Los tengo!":
-        types.ReplyKeyboardRemove()
+        markup = types.ReplyKeyboardRemove()
+        bot.send_message(msg.chat.id,  reply_markup=markup)
         bot.send_message(msg.chat.id, "¡Genial!, ya tienes tus primeros Biskymón, tratalos con cariño, estos pueden manifestar dinero.")
         time.sleep(2) 
         bot.send_message(msg.chat.id, "Ahora, nos dirigiremos a por los Biskymón del gimnasio Santuario del Cielo, pero ese lugar esta demasiado alto, asi que trataremos de atraer a algunos a nosotros.")
@@ -181,7 +183,7 @@ def manejar_ubicacion2(message):
     bot.send_message(message.chat.id, lon)
     bot.send_message(message.chat.id, lat)
 
-    if 43.26550  < lat< 43.26650  and -2.94000> lon >-2.95500:
+    if 43.26550  < lat< 43.26650  and -2.93500> lon >-2.95500:
         bot.reply_to(message, "¡Increible!, ahora creo que uno de tus compañeros entrenadores tiene una caña para pescar, pidesela.")
         bot.reply_to(message, "Cuando hayas pescado los borrachocarps, los Biskymon se acercarán a ti, avísame cuando los tengas.")
         bot.reply_to(message, "Prueba 🎯: Debes buscar en el agua un paquete con tu caña imantada.")
@@ -196,7 +198,8 @@ def manejar_ubicacion2(message):
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'aero')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Los tengo!":
-        types.ReplyKeyboardRemove()
+        markup = types.ReplyKeyboardRemove()
+        bot.send_message(msg.chat.id,  reply_markup=markup)
         bot.send_message(msg.chat.id, "¡Wow los has atrapado!, Estos Biskymon son únicos, desde algunos con conductas extrañas 👉👈 hasta otros lorosmon que son muy utiles para corregir tu lenguaje poco aliade. Pero no te preocues, seguro que a mas de uno le cojes mucho cariño <3.")
         time.sleep(4)
         with open('mariposa.jpg', 'rb') as mari:
@@ -233,6 +236,8 @@ def responder_opciones(msg):
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'antena')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Derrotados!":
+        markup = types.ReplyKeyboardRemove()
+        bot.send_message(msg.chat.id,  reply_markup=markup)
         bot.send_message(msg.chat.id, "No tenia mucha fe en ti pero... ¡Me alegro!")
         time.sleep(2) 
         bot.send_message(msg.chat.id, "Estos ejemplares son un poco raretes y escurridizos, pero unos gran compañeros.")
@@ -257,7 +262,8 @@ def responder_opciones(msg):
 @bot.message_handler(func=lambda msg: estados.get(msg.chat.id) == 'antena')
 def responder_opciones(msg):
     if msg.text == "✅ ¡Encontrado!":  
-        types.ReplyKeyboardRemove()
+        markup = types.ReplyKeyboardRemove()
+        bot.send_message(msg.chat.id,  reply_markup=markup)
         bot.send_message(msg.chat.id, "STOP")
 
 
