@@ -131,6 +131,7 @@ def manejar_ubicacion1(message):
     lat = message.location.latitude
     lon = message.location.longitude
     bot.send_message(message.chat.id, lon)
+    bot.send_message(message.chat.id, lat)
    
     # Ejemplo simple de respuesta en función de coordenadas
     if 43.26250 < lat< 43.26350 and -2.94500< lon< -2.95500:
