@@ -137,7 +137,7 @@ def manejar_ubicacion1(message):
    
     # Ejemplo simple de respuesta en función de coordenadas
     if 43.26250 < lat< 43.26350 and -2.94500> lon> -2.95500:
-        bot.reply_to(message, "¡Perfecto! Te encuentras debajo del gimnasio Cántico de Luz, aquí moran los Biskymon tipo hada. Pero para intentes entrar así por las buenas... no somos bienvenidos.")
+        bot.reply_to(message, " *{nombre}*¡Perfecto! Te encuentras debajo del gimnasio Cántico de Luz, aquí moran los Biskymon tipo hada. Pero para intentes entrar así por las buenas... no somos bienvenidos.")
         time.sleep(4)
         bot.reply_to(message, "Para robar, digo, conseguir tus primeros Biskymon, tendrás que distraer a los luchadores del gimnasio y luego buscar los Biskymon.")
         time.sleep(3)
@@ -228,7 +228,7 @@ def responder_opciones(msg):
         with open('audio2.mp3', 'rb') as lucha:
             bot.send_audio(msg.chat.id, lucha)
         time.sleep(10)
-        bot.send_message(msg.chat.id, "Prueba 🎯: JUEGO.")
+        bot.send_message(msg.chat.id, "Juego 🎯: Psicólogo, todos tienen una enfermedad. Tienes que adivinar cual es y así conseguiras los Biskymon.")
         time.sleep(5)
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
         btn1 = types.KeyboardButton("✅ ¡Derrotados!")
