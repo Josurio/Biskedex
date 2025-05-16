@@ -130,7 +130,7 @@ def guardar_nombre(message):
 def manejar_ubicacion(message):
     lat = message.location.latitude
     lon = message.location.longitude
-    bot.send_message(message.chat.id, lat)
+    bot.send_message(message.chat.id, lon)
    
     # Ejemplo simple de respuesta en función de coordenadas
     if 43.41000 < lat< 43.42000 and -2.95000< lon< 2.94000:
